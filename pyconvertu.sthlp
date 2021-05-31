@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.0.1  31dec2020}{...}
+{* *! version 1.1.0  31mar2021}{...}
 {viewerjumpto "Syntax" "xtimportu##syntax"}{...}
 {viewerjumpto "Description" "xtimportu##description"}{...}
 {viewerjumpto "Options" "xtimportu##options"}{...}
@@ -148,6 +148,8 @@ the result before modifying the data.
 {cmd:pyconvertu} requires an executable of a Python installation
 (Python 3 or higher) set with the help of {cmd:python set exec} command!
 {break}No additional Python packages from PyPi are needed.
+{break}However, for Python-savy users there is a pure Python version 
+{browse "https://pypi.org/project/pyconvertu/"} with the same functionality.
 
 {pstd}
 For detailed information on {cmd:python set exec}, see {helpb python}.

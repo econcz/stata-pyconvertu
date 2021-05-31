@@ -1,4 +1,4 @@
-*! version 1.0.1  31dec2020
+*! version 1.1.0  31mar2021
 program def pyconvertu
 	version 16.0
 	/*
@@ -21,7 +21,7 @@ program def pyconvertu
 			...
 		]
 		Author: Ilya Bolotov, MBA, Ph.D.
-		Date: 31 December 2020
+		Date: 31 March 2021
 	*/
 	syntax 																	///
 	name(name=name) [, to(string) Generate(string) replace print]			///
