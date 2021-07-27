@@ -1,4 +1,4 @@
-*! version 1.2.0  20jun2021
+*! version 1.2.1  20jul2021
 program def pyconvertu
 	version 16.0
 	/*
@@ -24,7 +24,7 @@ program def pyconvertu
 			...
 		]
 		Author: Ilya Bolotov, MBA, Ph.D.
-		Date: 20 June 2021
+		Date: 20 July 2021
 	*/
 	syntax 																	///
 	name(name=name) [, to(string) Generate(string) replace print]			///
@@ -163,6 +163,7 @@ from sfi import Data, Scalar
 
 # Python Modules
 import json
+import os
 import re
 
 # User-defined Functions
@@ -178,7 +179,7 @@ def _pyconvertu(
 	"""
 	try:
 		#// load classification
-		with open(source_file) as f:
+		with open(os.path.expanduser(source_file)) as f:
 			classification = list(filter(
 				lambda d: not d.get('metadata') and not d.get('sources'),
 				json.load(f)
@@ -213,7 +214,7 @@ def _pyconvertu_list(
 	"""
 	try:
 		#// load classification
-		with open(source_file) as f:
+		with open(os.path.expanduser(source_file)) as f:
 			classification = list(filter(
 				lambda d: not d.get('metadata') and not d.get('sources'),
 				json.load(f)
@@ -236,7 +237,7 @@ def _pyconvertu_info(
 	"""
 	try:
 		#// load classification metadata
-		with open(source_file) as f:
+		with open(os.path.expanduser(source_file)) as f:
 			metadata = list(filter(
 				lambda d: d.get('metadata') or d.get('sources'),
 				json.load(f)
@@ -257,7 +258,8 @@ def _pyconvertu_dump(
 		Writes JSON string to a JSON file (target_file).
 	*/
 	"""
-	with open(target_file.replace('.json', '') + '.json', 'w') as f:
+    target_file = target_file.replace('.json', '') + '.json'
+	with open(os.path.expanduser(target_file), 'w') as f:
 		#// dump classification and print message
 		json.dump(
 			json.loads('[' + json_string[0:-2].replace('\\', '\\\\') + ']'),
