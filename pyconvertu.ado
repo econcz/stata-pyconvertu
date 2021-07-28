@@ -258,7 +258,7 @@ def _pyconvertu_dump(
 		Writes JSON string to a JSON file (target_file).
 	*/
 	"""
-    target_file = target_file.replace('.json', '') + '.json'
+	target_file = target_file.replace('.json', '') + '.json'
 	with open(os.path.expanduser(target_file), 'w') as f:
 		#// dump classification and print message
 		json.dump(
