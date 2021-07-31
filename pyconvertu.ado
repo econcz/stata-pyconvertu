@@ -1,4 +1,4 @@
-*! version 1.2.1  20jul2021
+*! version 1.2.2  20jul2021
 program def pyconvertu
 	version 16.0
 	/*
