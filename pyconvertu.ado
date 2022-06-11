@@ -1,4 +1,4 @@
-*! version 1.2.4  31jan2022  I I Bolotov
+*! version 1.2.5  31mar2022  I I Bolotov
 program def pyconvertu
 	version 16.0
 	/*
@@ -50,7 +50,11 @@ program def pyconvertu
 			exit 198
 		}
 		/* ado + python                                                       */
-		python: l = _pyconvertu(r'`from'', Data.get('`name''), '`to'')
+		cap python: l = _pyconvertu(r'`from'', Data.get('`name''), '`to'')
+		if _rc {
+			di as err "JSON file does not contain valid entry/dictionary"
+			exit 7102
+		}
 		if `"`print'"' == "" {				// store the converted variable
 			g `converted' = ""
 			python: Data.store('`converted'', None, l)
@@ -78,7 +82,11 @@ program def pyconvertu
 			exit 198
 		}
 		/* ado + python                                                       */
-		python: l = _pyconvertu_list(r'`from'', '`to''); l.sort()
+		cap python: l = _pyconvertu_list(r'`from'', '`to''); l.sort()
+		if _rc {
+			di as err "JSON file does not contain valid entry/dictionary"
+			exit 7102
+		}
 		python: n = len(l) - Data.getObsTotal()
 		if `"`print'"' == "" {				// store the classification
 			g `converted' = ""
@@ -95,7 +103,11 @@ program def pyconvertu
 	}
 	// print metadata and sources                                               
 	if `"`name'"' == "__info" {
-		python: l = _pyconvertu_info(r'`from'')
+		cap python: l = _pyconvertu_info(r'`from'')
+		if _rc {
+			di as err "JSON file does not contain valid entry/dictionary"
+			exit 7102
+		}
 		python: print(f'\n'.join(l))
 		exit 0
 	}
@@ -203,7 +215,7 @@ def _pyconvertu(
 			from_list
 		))
 	except:
-		return {}
+		raise PyConvertUError
 
 def _pyconvertu_list(
 	source_file=r'', from_classification='', *args, **kwargs
@@ -227,7 +239,7 @@ def _pyconvertu_list(
 			classification
 		))
 	except:
-		return {}
+		raise PyConvertUError
 
 def _pyconvertu_info(
 	source_file=r'', *args, **kwargs
@@ -250,7 +262,7 @@ def _pyconvertu_info(
 			metadata
 		))
 	except:
-		return {}
+		raise PyConvertUError
 
 def _pyconvertu_dump(
 	target_file=r'', json_string='', *args, **kwargs
