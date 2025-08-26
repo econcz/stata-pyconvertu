@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.2.6  07oct2022}{...}
+{* *! version 1.3.0  25aug2025}{...}
 {viewerjumpto "Syntax" "xtimportu##syntax"}{...}
 {viewerjumpto "Description" "xtimportu##description"}{...}
 {viewerjumpto "Options" "xtimportu##options"}{...}
@@ -160,8 +160,12 @@ the result before modifying the data.
 {cmd:pyconvertu} requires an executable of a Python installation
 (Python 3 or higher) set with the help of {cmd:python set exec} command!
 {break}No additional Python packages from PyPi are needed.
-{break}Still, for Python-savy users there is a pure Python version 
-{browse "https://pypi.org/project/pyconvertu/"} with the same functionality.
+{break}For Python users, there is a standalone Python implementation {browse "https://pypi.org/project/pyconvertu/"} with the same functionality.
+{break}Likewise, for R users, there is an R equivalent {browse "https://cran.r-project.org/web/packages/rconvertu/"}.
+
+{pstd}
+For a pure Stata alternative, based on Excel files instead of JSON, consult
+{helpb cconv}.
 
 {pstd}
 For detailed information on {cmd:python set exec}, consult {helpb python}.
