@@ -1,4 +1,4 @@
-*! version 1.3.0  25aug2025  I I Bolotov
+*! version 1.3.0  20nov2025  I I Bolotov
 program def pyconvertu
 	version 16.0
 	/*
@@ -182,7 +182,6 @@ version 16.0
 python:
 # Stata Function Interface
 from sfi import Data, Scalar
-
 # Python Modules
 from   os        import path
 from   re        import sub, compile, Pattern, I, M, error as RegexError

@@ -1,16 +1,16 @@
 {smcl}
-{* *! version 1.3.0  25aug2025}{...}
-{viewerjumpto "Syntax" "xtimportu##syntax"}{...}
-{viewerjumpto "Description" "xtimportu##description"}{...}
-{viewerjumpto "Options" "xtimportu##options"}{...}
-{viewerjumpto "Remarks" "xtimportu##remarks"}{...}
-{viewerjumpto "Examples" "xtimportu##examples"}{...}
+{* *! version 1.3.0  20nov2025}{...}
+{viewerjumpto "Syntax" "pyconvertu##syntax"}{...}
+{viewerjumpto "Description" "pyconvertu##description"}{...}
+{viewerjumpto "Options" "pyconvertu##options"}{...}
+{viewerjumpto "Remarks" "pyconvertu##remarks"}{...}
+{viewerjumpto "Examples" "pyconvertu##examples"}{...}
 {title:Title}
 
 {phang}
 {bf:pyconvertu} {hline 2} Convert a string variable to a classification from
-a built-in or user-defined JSON file using Python 3 (regular expressions) with
-Unicode support, the default being ISO 3166-1 (country codes and names)
+a built-in or user-defined JSON file using Python 3 (regular expressions with
+Unicode support), the default being ISO 3166-1 (country codes and names)
 
 {marker syntax}{...}
 {title:Syntax}
@@ -50,8 +50,8 @@ is required if {help varname:{it:varname}} or "__classification" are specified.
 
 {pstd}
 {bf:pyconvertu} converts a string variable to a classification from a built-in
-or user-defined JSON file using Python 3 (regular expressions) with Unicode
-support.
+or user-defined JSON file using Python 3 (regular expressions with Unicode
+support).
 {break}By default, country names (in English) or codes are converted to
 ISO 3166-1 codes (alpha-2, alpha-3, and numeric) and to full names (in English
 and in French).
@@ -164,7 +164,7 @@ the result before modifying the data.
 {break}Likewise, for R users, there is an R equivalent {browse "https://cran.r-project.org/web/packages/rconvertu/"}.
 
 {pstd}
-For a pure Stata alternative, based on Excel files instead of JSON, consult
+For a pure Stata alternative, with reduced {bf:__dump} functionality, consult
 {helpb cconv}.
 
 {pstd}
@@ -173,7 +173,8 @@ For detailed information on {cmd:python set exec}, consult {helpb python}.
 {marker examples}{...}
 {title:Examples}
 
-        * write the complete default JSON file (ISO 3166-1) to data
+        * write the complete default JSON file (ISO 3166-1)
+        * to data
         {cmd:. clear}
         {cmd:. pyconvertu __classification, to(iso3) gen(iso3)}
         {cmd:. foreach s in "iso2" "isoN" "name_en" "name_fr" {c -(}}
